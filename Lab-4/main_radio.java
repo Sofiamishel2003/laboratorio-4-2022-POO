@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import javax.lang.model.util.ElementScanner6;
+
 import java.util.ArrayList;
 public class main_radio {
     public static void main(String[] args){
@@ -155,31 +158,40 @@ public class main_radio {
                     else if(opcion1 == 5){
                         while(x !=4)
                         {
-                        System.out.println("Modo telefono---------------\n[1] Conectar \n[2] Mostrar contactos \n[3] Llamar contacto\n[4] Salir");
+                        System.out.println("Modo telefono---------------\n[1] Conectar y Desconectar \n[2] Mostrar contactos \n[3] Llamar contacto\n[4] Salir");
                         x = reclado.nextInt();
                         switch(x) 
                         {
                             case 1:
-                                tumba_la_casa.conexion(true);
+                                System.out.println("Desea conectar el telefono?");
+                                System.out.println("[1] Si\n[2] No");
+                                v= reclado.nextInt();
+                                if(v==1) tumba_la_casa.conexion(true);
+                                else tumba_la_casa.conexion(false);;
                                 break;
                             case 2:
                                 tumba_la_casa.contactos(contactos);
                                 break;
                             case 3:
-                                tumba_la_casa.llamar(contactos);
-                                System.out.println("Finalizar llamada presione 1");
-                                x = reclado.nextInt();
-                                if(x==1)
+                                if(tumba_la_casa.get_conectar())
                                 {
-                                    tumba_la_casa.finalizar();
+                                    tumba_la_casa.llamar(contactos);
+                                    System.out.println("Cambiar a auriculares o speaker-----------");
+                                    System.out.println("[1] Auriculares\n[2] Speaker");
+                                    v = reclado.nextInt();
+                                    if(v==1) tumba_la_casa.audio(true);
+                                    else tumba_la_casa.audio(false);
+                                    System.out.println("Finalizar llamada presione 1");
+                                    x = reclado.nextInt();
+                                    if(x==1)
+                                    {
+                                        tumba_la_casa.finalizar();
+                                    }
                                 }
-                                break;
-                            case 4:
-                                System.out.println("Cambiar a auriculares o speaker-----------");
-                                System.out.println("[1] FM\n[2] AM");
-                                v = reclado.nextInt();
-                                if(v==1) tumba_la_casa.audio(true);
-                                else tumba_la_casa.audio(false);
+                                else
+                                {
+                                    System.out.println("No se puede porque no está conectado el telefono");
+                                }
                                 break;
                             default:
                                 System.out.println("Opcion ingresada erroneamente");

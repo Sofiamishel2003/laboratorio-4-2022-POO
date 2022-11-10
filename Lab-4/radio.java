@@ -25,6 +25,10 @@ public class radio implements modo_estado, modo_radio, modo_volumen, modo_produc
     {
         return estado;
     }
+    public Boolean get_conectar()
+    {
+        return conectar;
+    }
     @Override
     //----------modo_estado----------------------
     public void estado(Boolean state)
@@ -151,7 +155,7 @@ public class radio implements modo_estado, modo_radio, modo_volumen, modo_produc
             x=x+1;
         }
         System.out.println("Escoja un contacto a llamar");
-        int o = reclado.nextInt();
+        int o = reclado.nextInt()-1;
         System.out.println("llamando a "+lista.get(o).get_nombre()+ " del numero "+ lista.get(o).get_telefono());
 
     }
@@ -178,7 +182,8 @@ public class radio implements modo_estado, modo_radio, modo_volumen, modo_produc
         int x=1;
         for (cancion i: lista) {
             System.out.println("-"+x+". "+i.get_nombre() +", artista: "+i.get_autor()+"("+i.get_genero()+")");
-          }
+            x=x+1;
+        }
     }
     public void cambiar_c(Boolean flag,ArrayList<cancion> lista)
     {
