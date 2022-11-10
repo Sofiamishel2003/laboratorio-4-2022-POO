@@ -60,8 +60,10 @@ public class main_radio {
         canciones=hitsongs;
         System.out.println("Radio tumba la casa \n[1] Encender \n[2] Cambiar volumen \n[3] Modo radio\n[4] Modo reproducción\n[5] Modo telefono\n[6] Modo productividad\n[7] Apagar");
         opcion1 = reclado.nextInt();
+        try{
         while(opcion1 !=7)
-            {   if(opcion1 == 1) //subirle y bajarle volumen
+            {   
+                if(opcion1 == 1) //subirle y bajarle volumen
                 { 
                     tumba_la_casa.estado(true);
                 }
@@ -210,8 +212,14 @@ public class main_radio {
                     
                     }
             }
+            }
         }
-        }
+        catch(Exception e)
+            {
+                System.out.println("Dato ingresado incorrectamente");
+            }
+     }
+}
 
     
-}
+
