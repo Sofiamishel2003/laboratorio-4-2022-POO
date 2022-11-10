@@ -82,7 +82,7 @@ public class radio implements modo_estado, modo_radio, modo_volumen, modo_produc
     }
     //----------modo_volumen---------------------
 
-    public void volumen(Boolean flag)
+    public static void volumen(Boolean flag)
     {
         if (flag)
         {

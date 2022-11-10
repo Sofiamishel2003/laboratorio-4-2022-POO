@@ -4,41 +4,27 @@ public class main_radio {
     public static void main(String[] args){
         Scanner reclado = new Scanner(System.in);
         int opcion1 = 0;
+        radio tumba_la_casa= new radio();
         ArrayList <cancion> canciones =new ArrayList<cancion>();
         ArrayList <contacto> contactos =new ArrayList<contacto>();
         ArrayList <Double> emisoras =new ArrayList<Double>();
-        {
-            ArrayList <cancion> top5 =new ArrayList<cancion>();
-            ArrayList <contacto> contactos =new ArrayList<contacto>();
-            cancion midnights = new cancion(nombre:"Midnights",autor:"Talyor Swift",genero:"Pop",tiempo:"5:10 min");
-            top5.add(midnights);
+        //Playlist #1 
+        ArrayList <cancion> top5 =new ArrayList<cancion>();
+        cancion midnights = new cancion("Midnights","Talyor Swift","Pop","5:10 min");
+        cancion revolver = new cancion("Revolver","The Beatles","Rock","4:10 min");
+        cancion motomami = new cancion("Motomami","Rosalia","Música tropical","3:10 min");
+        cancion sour = new cancion("Sour","Olivia Rodrigo","pop","2:21 min");
+        top5.add(midnights);
+        top5.add(revolver);
+        top5.add(motomami);
+        top5.add(sour);
+        //Playlist #2
+        ArrayList <cancion> hitsongs =new ArrayList<cancion>();
+        //Playlist #3
+        ArrayList <cancion> salsamix =new ArrayList<cancion>();
+        //Playlist #4
+        ArrayList <cancion> indie =new ArrayList<cancion>();
 
-        }
-
-        {
-            ArrayList <cancion> top5 =new ArrayList<cancion>();
-            ArrayList <contacto> contactos =new ArrayList<contacto>();
-            cancion revolver = new cancion(nombre:"Revolver",autor:"The Beatles",genero:"Rock",tiempo:"4:10 min");
-            top5.add(revolver);
-
-        }
-
-        {
-            ArrayList <cancion> top5 =new ArrayList<cancion>();
-            ArrayList <contacto> contactos =new ArrayList<contacto>();
-            cancion motomami = new cancion(nombre:"Motomami",autor:"Rosalia",genero:"Música tropical",tiempo:"3:10 min");
-            top5.add(motomami);
-
-        }
-
-        {
-            ArrayList <cancion> top5 =new ArrayList<cancion>();
-            ArrayList <contacto> contactos =new ArrayList<contacto>();
-            cancion sour = new cancion(nombre:"Sour",autor:"Olivia Rodrigo",genero:"pop",tiempo:"2:21 min");
-            top5.add(sour);
-
-        }
-        
         System.out.println("Radio tumba la casa \n[1] Encender \n[2] Cambiar volumen \n[3] Modo radio\n[4] Modo reproducción\n[5] Modo telefono\n[6] Modo productividad\n[7] Apagar");
         opcion1 = reclado.nextInt();
         if(opcion1 ==1){
@@ -51,7 +37,7 @@ public class main_radio {
                 int v = reclado.nextInt();
                 if(v==2)
                 {
-                    //radio.volumen(true);
+                    tumba_la_casa.volumen(true);
                 }
                 else
                 {
