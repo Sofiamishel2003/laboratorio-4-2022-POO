@@ -7,6 +7,38 @@ public class main_radio {
         ArrayList <cancion> canciones =new ArrayList<cancion>();
         ArrayList <contacto> contactos =new ArrayList<contacto>();
         ArrayList <Double> emisoras =new ArrayList<Double>();
+        {
+            ArrayList <cancion> top5 =new ArrayList<cancion>();
+            ArrayList <contacto> contactos =new ArrayList<contacto>();
+            cancion midnights = new cancion(nombre:"Midnights",autor:"Talyor Swift",genero:"Pop",tiempo:"5:10 min");
+            top5.add(midnights);
+
+        }
+
+        {
+            ArrayList <cancion> top5 =new ArrayList<cancion>();
+            ArrayList <contacto> contactos =new ArrayList<contacto>();
+            cancion revolver = new cancion(nombre:"Revolver",autor:"The Beatles",genero:"Rock",tiempo:"4:10 min");
+            top5.add(revolver);
+
+        }
+
+        {
+            ArrayList <cancion> top5 =new ArrayList<cancion>();
+            ArrayList <contacto> contactos =new ArrayList<contacto>();
+            cancion motomami = new cancion(nombre:"Motomami",autor:"Rosalia",genero:"Música tropical",tiempo:"3:10 min");
+            top5.add(motomami);
+
+        }
+
+        {
+            ArrayList <cancion> top5 =new ArrayList<cancion>();
+            ArrayList <contacto> contactos =new ArrayList<contacto>();
+            cancion sour = new cancion(nombre:"Sour",autor:"Olivia Rodrigo",genero:"pop",tiempo:"2:21 min");
+            top5.add(sour);
+
+        }
+        
         System.out.println("Radio tumba la casa \n[1] Encender \n[2] Cambiar volumen \n[3] Modo radio\n[4] Modo reproducción\n[5] Modo telefono\n[6] Modo productividad\n[7] Apagar");
         opcion1 = reclado.nextInt();
         if(opcion1 ==1){
