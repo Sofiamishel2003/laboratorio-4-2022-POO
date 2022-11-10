@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 public class radio implements modo_estado, modo_radio, modo_volumen, modo_productividad, modo_telefono{ //declaracion de variables protegidas y creacion de la clase padre
     private String modulation;
     private String estado;
@@ -19,6 +20,10 @@ public class radio implements modo_estado, modo_radio, modo_volumen, modo_produc
         conectar=false;
         pos=0;
         audio="speaker";
+    }
+    public String get_estado()
+    {
+        return estado;
     }
     @Override
     //----------modo_estado----------------------
@@ -78,11 +83,15 @@ public class radio implements modo_estado, modo_radio, modo_volumen, modo_produc
         int x=1;
         for (Double i: lista) {
             System.out.println("-"+x+". "+i);
+            x=x+1;
           }
+        System.out.println("Cual desea que sea la nueva emisora");
+        int o = reclado.nextInt();
+        emisora=lista.get(o-1); 
     }
     //----------modo_volumen---------------------
 
-    public static void volumen(Boolean flag)
+    public  void volumen(Boolean flag)
     {
         if (flag)
         {
@@ -90,14 +99,25 @@ public class radio implements modo_estado, modo_radio, modo_volumen, modo_produc
         }
         else
         {
-            volumen=volumen-1;
+            if (volumen==0)
+            {
+                System.out.println("El volumen ya esta en 0");
+            }
+            else
+            {
+                volumen=volumen-1;
+            }
         }
         System.out.println("La volumen es "+volumen);
     }
     //----------modo_productividad---------------------
-    public String viajes()
+    public String viajes(String destino)
     {
-        return "random de tiempo de llegada y distancia";
+        Random r = new Random();
+        int distancia = r.nextInt(100)+1; 
+        int tiempo = r.nextInt(10)+1; 
+        String respuesta="Para llegar a "+destino+" se tardara "+tiempo+"h en recorrer "+distancia+"km";
+        return respuesta;
     }
     //----------modo_telefono---------------------
 
@@ -120,14 +140,17 @@ public class radio implements modo_estado, modo_radio, modo_volumen, modo_produc
         int x=1;
         for (contacto i: lista) {
             System.out.println("-"+x+". "+i.get_nombre() +", telefono: "+i.get_telefono());
-          }
+            x=x+1;
+        }
     }
     public void llamar(ArrayList<contacto> lista)
     {
         int x=1;
         for (contacto i: lista) {
             System.out.println("-"+x+". "+i.get_nombre() +", telefono: "+i.get_telefono());
-          }
+            x=x+1;
+        }
+        System.out.println("Escoja un contacto a llamar");
         int o = reclado.nextInt();
         System.out.println("llamando a "+lista.get(o).get_nombre()+ " del numero "+ lista.get(o).get_telefono());
 
@@ -159,7 +182,7 @@ public class radio implements modo_estado, modo_radio, modo_volumen, modo_produc
     }
     public void cambiar_c(Boolean flag,ArrayList<cancion> lista)
     {
-        if (flag==true || pos==0)
+        if (flag==true)
         {
             pos=pos+1;
             if(pos==lista.size())
