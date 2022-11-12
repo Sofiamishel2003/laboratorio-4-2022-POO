@@ -1,349 +1,273 @@
 import java.util.ArrayList;
+
+//
+//
+//  @ Project : Laboratorio4
+//  @ File Name : Principal.java
+//  @ Date : 11/8/2022
+//  @ Author : 
+//
+//
+
 import java.util.Scanner;
+import javax.lang.model.util.ElementScanner6;
+import java.util.ArrayList;
 
 
 public class Principal {
-    public static void main(String[] args) {
-        ArrayList <Double> emisoras =new ArrayList<Double>();
-        Scanner keyboard = new Scanner(System.in);
-        radio rad = new radio();
+	public static void main(String[] args) {
+		Scanner teclado= new Scanner(System.in);
+		Boolean continuar = true;
+		Boolean continuar3=true;
+		Boolean continuar2 = true;
+		Boolean continuar4=true;
+		Boolean continuar5=true;
+		Boolean continuar6=true;
+		Boolean continuar7=true;
+		int op1=0;
+		int op2=0;
+		int op3=0;
+		int op4=0;
+		int op5=0;
+		int op6=0;
+		int op7=0;
+		int op8=0;
+		int op9=0;
+		int op10=0;
+		int frecuencia=0;
+		int emisora=0;
+		int audio=0;
+		Double emisora1=0.0;
+		String respuesta="";
 
-        ArrayList <contacto> contactos = new ArrayList<contacto>();
-        ArrayList <cancion> canciones =new ArrayList<cancion>();
+		//creacion radio y listas de canciones
+		radio yosi_sideral = new radio();
+		ArrayList <cancion> canciones = new ArrayList<cancion>();
+		ArrayList <contacto> contactos = new ArrayList<contacto>();
+		ArrayList <Double> emisoras = new ArrayList<Double>();
 
-        ArrayList <cancion> lista1 =new ArrayList<cancion>();
-        cancion lloviendoestrellas = new cancion("Lloviendo estrellas","Cristian Castro","pop","4:15 min");
-        cancion cuandocalientaelsol = new cancion("Cuando calienta el sol","Luis Miguel","pop","3:55 min");
-        cancion silaves = new cancion("Si la ves","Franco de Vita","Balada","3:59 min");
-        cancion teamo = new cancion("Te amo","Alexander Acha","Balada","3:52 min");
-        lista1.add(lloviendoestrellas);
-        lista1.add(cuandocalientaelsol);
-        lista1.add(silaves);
-        lista1.add(teamo);
+		//contactos
+		contacto c1= new contacto("James", "5416-6812");
+		contacto c2= new contacto("Andre", "5654-1235");
+		contacto c3= new contacto("Maddi", "2815-9564");
+		contacto c4= new contacto("Nick", "5517-6476");
+		contactos.add(c1);
+		contactos.add(c2);
+		contactos.add(c3);
+		contactos.add(c4);
 
-        ArrayList <cancion> lista2 =new ArrayList<cancion>();
-        cancion changes = new cancion("Changes","2Pac","rap","4:15 min");
-        cancion therss = new cancion("The Real Slim Shady, ","Eminem","rap","4:55 min");
-        cancion hustlermusic = new cancion("Hustler Music, ","Lil Wayne","rap","4:59 min");
-        cancion pitd = new cancion("PRIDE IS THE DEVIL","J. Cole","rap","4:52 min");
-        lista2.add(changes);
-        lista2.add(therss);
-        lista2.add(hustlermusic);
-        lista2.add(pitd);
+		//PlayList 1
+		ArrayList <cancion> hitsMundial = new ArrayList<cancion>();
+		cancion elEfecto = new cancion("El efecto","3:33 min","Bad Bunny","Regueton"); 
+		cancion unHoly = new cancion("Unholy","3:36 min", "Sam Smith","Pop");
+		cancion laBachata = new cancion("La Bachata","3:43", "Manuel Turizo", "Bachata");
+		cancion asItVas = new cancion("As It Vas","3:47 min", "Harry Styles", "Pop");
+		cancion mePortoBonito = new cancion("Me Porto Bonito", "3:58 min","Bad Bunny", "Regueton");
+		cancion Mercy = new cancion("Mercy", "3:29 min", "Shawn Mendes", "Pop");
+		hitsMundial.add(elEfecto);
+		hitsMundial.add(unHoly);
+		hitsMundial.add(laBachata);
+		hitsMundial.add(asItVas);
+		hitsMundial.add(mePortoBonito);
+		hitsMundial.add(Mercy);
 
-        contacto sr_padre= new contacto("Tyrone the 3","51752312");
-        contacto sra_madre= new contacto("Lily Brada","56234123");
-        contacto wichomecanico= new contacto("Wicho","30316307");
-        contacto sacerdote= new contacto("Jamal","58282853");
-        contacto alba= new contacto("Juana la cubana","54185296");
-        contactos.add(sr_padre);
-        contactos.add(sra_madre);
-        contactos.add(wichomecanico);
-        contactos.add(sacerdote);
-        contactos.add(alba);
+		//Inicio del menu de seleccion del usuario
+		while(continuar){
+			continuar2=true;
+			System.out.println("Radio Hits Mundiales \n1.Encender \n2.Apagar");
+			op1 = teclado.nextInt();
+			teclado.nextLine();
+			if(op1==1){
+				while(continuar2){
+					continuar3=true;
+					continuar4=true;
+					continuar5=true;
+					continuar6=true;
+					continuar7=true;
+					yosi_sideral.estado(true);
+					System.out.println("Radio Hits Mundiales \n1.Cambiar volumen \n2.Modo Radio \n3.Modo Reproduccion \n4.Modo Telefono \n5.Modo Productividad \n6.Apagar");
+					op2 = teclado.nextInt();
+					teclado.nextLine();
+					if(op2==1){
+						System.out.println("1. Subir volumen \n2. Bajar volumen");
+						op3=teclado.nextInt();
+						teclado.nextLine();
+						if(op3==1){
+							yosi_sideral.volumen(true);
+						}
+						else if(op3==2){
+							yosi_sideral.volumen(false);
+						}
+						else{
+							System.out.println("Ingrese algo válido");
+						}
 
-        int switch1case = 0;
-        while(switch1case != 7)
-        {
-            System.out.println("----------------------------------------------\n Radio en modo reposo, desea: \n1. Encender Radio \n" + "2. Apagar Radio \n" );
-            switch1case = keyboard.nextInt();
-            switch(switch1case)
-            {
-                case 1: 
-                {
-                    //encender
-                    
-                    int switch2caseA = 0;
-                    System.out.println("¿Qué funcion desea usar? \n 1. Cambiar volumen \n 2. Modo radio \n 3. Modo reproduccion \n 4. Modo telefono \n 5. Modo productividad");
-                    switch2caseA = keyboard.nextInt();
-                    switch(switch2caseA)
-                    {
+					}
+					else if(op2==2){
+						while(continuar3){
+							System.out.println("Ahora se encuentra en el modo radio");
+							System.out.println("\n1. Cambiar frecuencia \n2. Cambiar emisora \n3. Guardar emisora \n4. Cargar emisora \n5. Salir");
+							op4=teclado.nextInt();
+							teclado.nextLine();
+							if(op4==1){
+								System.out.println("1. FM \n2. AM");
+								frecuencia=teclado.nextInt();
+								teclado.nextLine();
+								if(frecuencia==1){
+									yosi_sideral.cambiar(true);
+								}
+								else if(frecuencia==2){
+									yosi_sideral.cambiar(false);
+								}
 
-                        case 1:
-                        {
-                            //subir o bajar volumen
-                            int respuesta = 0;
-                            System.out.println("¿Qué desea hacer? \n 1. Subir volumen \n 2. Bajar volumen");
-                            respuesta = keyboard.nextInt();
-                            if(respuesta == 1||respuesta == 2)
-                            {
-                                if(respuesta == 1)
-                                {
-                                    rad.volumen(true);
-                                }
-                                else
-                                {
-                                    rad.volumen(false);
-                                }
-                            }
-                            else
-                            {
-                                System.out.println("Opción no válida");
-                            }
-                            break;
-                        }case 2:
-                        {
+							}
+							else if(op4==2){
+								System.out.println("1. Subir \n2. Bajar");
+								emisora=teclado.nextInt();
+								teclado.nextLine();
+								if(emisora==1){
+									yosi_sideral.cambiar_e(true);
+								}
+								else if(emisora==2){
+									yosi_sideral.cambiar_e(false);
+								}
 
-                            //modo radio
-                            int switch3case = 0;
-                            System.out.println("Opciones de modo radio: \n 1. Cambiar FM a AM \n 2. Cambiar emiosras \n 3. Guardar emisoras \n 4. Cargar emioras");
-                            switch3case = keyboard.nextInt();
-                            switch(switch3case)
-                            {
-                                case 1:
-                                {
-                                    //cambiar FM o AM
-                                    int respuesta = 0;
-                                    System.out.println("¿Qué desea hacer? \n 1. Cambiar a FM \n 2. Cambiar a AM");
-                                    respuesta = keyboard.nextInt();
-                                    if(respuesta == 1||respuesta == 2)
-                                    {
-                                        if(respuesta == 1)
-                                        {
-                                            rad.cambiar(true);
-                                        }
-                                        else
-                                        {
-                                            rad.cambiar(false);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Opción no válida");
-                                    }       
-                                    break;
-                                }case 2:
-                                {
-                                    //cambiar emisoras
-                                    int respuesta = 0;
-                                    System.out.println("¿Qué desea hacer? \n 1. Subir de frecuencia \n 2. Bajar la frecuencia");
-                                    respuesta = keyboard.nextInt();
-                                    if(respuesta == 1||respuesta == 2)
-                                    {
-                                        if(respuesta == 1)
-                                        {
-                                            rad.cambiar_e(true);
-                                        }
-                                        else if (respuesta == 2)
-                                        {
-                                            rad.cambiar_e(false);
-                                        }else{
-                                            System.out.println("opcion no valida");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Opción no válida");
-                                    }
-                                    break;
-                                }case 3:
-                                {
-                                    //guardar emisoras
-                                    System.out.println("Ingrese la frecuencia de la emisora que desee agregar");
-                                    Double emi= keyboard.nextDouble();
-                                    rad.guardar(emisoras, emi);
-                                    break;
-                                }case 4:
-                                {
-                                    //cargar emisoras
-                                    rad.cargar(emisoras);
-                                    break;
-                                }
-                                
-                            }
-                            break;
-                        }case 3:
-                        {
-                            //modo reproduccion
-                            int switch4case = 0;
-                            System.out.println("Opciones de modo reproduccion: \n 1. Seleccionar lista de reproduccion \n 2. Cambiar cancion \n 3. Datos de la cancion ");
-                            switch4case = keyboard.nextInt();
-                            switch(switch4case)
-                            {
-                                case 1:
-                                {
-                                    //Seleccionar listas de reproduccion
-                                    int respuesta = 0;
-                                    System.out.println("¿Qué playlist desea escoger? \n 1. Musica balada y pop \n 2. Rap ");
-                                    respuesta = keyboard.nextInt();
-                                    if(respuesta == 1)
-                                    {
-                                        rad.seleccionar(lista1);
+							}
+							else if(op4==3){
+								System.out.println("Ingrese la emisora que desea guardar");
+								emisora1=teclado.nextDouble();
+								teclado.nextLine();
+								yosi_sideral.guardar(emisoras, emisora1);
 
-                                    }else if (respuesta == 2){
-                                        rad.seleccionar(lista2);
-                                    }else
-                                    {
-                                        System.out.println("Debe seleccionar una de las playlists");
-                                        break;
-                                    }
-                                    break;
-                                }case 2:
-                                {
-                                    //cambiar cancion
-                                    int respuesta = 0;
-                                    System.out.println("¿Qué desea hacer? \n 1. Adelantar la cancion \n 2. Regresar la cancion");
-                                    respuesta = keyboard.nextInt();
+							}
+							else if(op4==4){
+								yosi_sideral.cargar(emisoras);
 
-                                    //chequear
-                                    if(respuesta == 1||respuesta == 2)
-                                    {
-                                        if(respuesta == 1)
-                                        {
-                                            rad.cambiar_c(true, canciones);
-                                            System.out.println("Se ha adelantado una cancion");
-                                        }
-                                        else
-                                        {
-                                            rad.cambiar_c(false, canciones);
-                                            System.out.println("Se ha regresado una cancion");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Opción no válida");
-                                    }
-                                    break;
-                                }case 3:
-                                {
-                                    //Escuchar cancion o seas datos de la cancion: autor, duracion y asi
-                                        rad.escuchar(canciones);
-                                    break;
-                                }
-                            }
-                            break;
+							}
+							else if(op4==5){
+								continuar3=false;
+							}
+						}
+						
+					}
+					else if(op2==3){
+						while(continuar4){
+							System.out.println("Ahora se encuentra en el modo Reproduccion");
+							System.out.println("\n1. Cambiar cancion \n2. Escuchar canción \n3. Seleccionar canción \n4. Salir");
+							op5=teclado.nextInt();
+							teclado.nextLine();
+							if(op5==1){
+								System.out.println("1. Cambiar hacia adelante \n2. Cambiar hacia atrás");
+								op10=teclado.nextInt();
+								teclado.nextLine();
+								if(op10==1){
+									yosi_sideral.cambiar_c(true,hitsMundial);
 
-                        }case 4:
-                        {
-                            //modo telefono
-                            int switch5case = 0;
-                            System.out.println("Opciones de modo telefono: \n 1. Conectar o desconectar \n 2. Mostrar contactos \n 3. Llamar contacto ");
-                            switch5case = keyboard.nextInt();
-                            switch(switch5case)
-                            {
-                                case 1:
-                                {
-                                   //conectar/desconectar telefono
-                                    int respuesta = 0;
-                                    System.out.println("¿Qué desea hacer? \n 1. Conectar telefono \n 2. Desconectar");
-                                    respuesta = keyboard.nextInt();
-                                    if(respuesta == 1||respuesta == 2)
-                                    {
-                                        if(respuesta == 1)
-                                        {
-                                            rad.conexion(true);
-                                        }
-                                        else
-                                        {
-                                            rad.conexion(false);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Opción no válida");
-                                    }
-                                   break;
-                                }case 2:
-                                {
-                                    //mostrar contactos
-                                    rad.contactos(contactos);
-                                    break;
-                                }case 3:
-                                {
-                                    //llamar contacto   
-                                    rad.llamar(contactos);
-                                    int respuesta = 0;
-                                    System.out.println("--------------------------------------- \nCuando desee finalizar la llamada presione [1] \nSi desea cambiar entre auriculares y speaker presione [2]");
-                                    respuesta = keyboard.nextInt();
-                                    if (respuesta == 1||respuesta == 2)
-                                    {
-                                        if(respuesta == 1)
-                                        {
-                                            rad.finalizar();
-                                        }
-                                        else if(respuesta == 2)
-                                        {
-                                            //cambiar a speaker o auriculares
-                                            int respuesta1 = 0;
-                                            System.out.println("¿A que desea cambiar? \n1. speaker \n2. audifonos ");
-                                            respuesta1 = keyboard.nextInt();
-                                            if(respuesta1 == 1||respuesta1 == 2)
-                                            {
-                                                if(respuesta1 == 1)
-                                                {
-                                                    rad.audio(true);
-                                                }
-                                                else if(respuesta1 == 2)
-                                                {
-                                                    rad.audio(false);
-                                                }else{
-                                                    System.out.println("Opción no válida");
-                                                }
-                                            }
-                                            else
-                                            {
-                                                System.out.println("Opción no válida");
-                                            }
+								}
+								else if(op10==2){
+									yosi_sideral.cambiar_c(false,hitsMundial);
+								}
 
-                                        }else
-                                        {
-                                            System.out.println("Opción no válida");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Opción no válida");
-                                    }
-                                    
-                                    
+							}
+							else if(op5==2){
+								yosi_sideral.escuchar(hitsMundial);
 
-                                        
+							}
+							else if(op5==3){
+								yosi_sideral.seleccionar(hitsMundial);
+							}
+							else if(op5==4){
+								continuar4=false;
+							}
+						}
+	
+					}
+					else if(op2==4){
+						System.out.println("Ahora se encuentra en el modo Telefono");
+						System.out.println("\n1. Conectar el teléfono \n2. Salir");
+						op8=teclado.nextInt();
+						teclado.nextLine();
+								if(op8==1){
+									while(continuar5){
+										System.out.println("\n1. Ver contactos \n2. Llamar un contacto \n3. Cambiar el audio  \n4. Desconectar el teléfono");
+										op6=teclado.nextInt();
+										teclado.nextLine();
+										if(op6==1){
+											yosi_sideral.contactos(contactos);
+										}
+										else if(op6==2){
+											continuar7=true;
+											yosi_sideral.llamar(contactos);
+											while(continuar7){
+												System.out.println("1. Finalizar llamada");
+												op9=teclado.nextInt();
+												teclado.nextLine();
+												if(op9==1){
+													yosi_sideral.finalizar();
+													continuar7=false;
+												}
 
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                        case 5:
-                        {
-                            //modo productividad
-                            int switch6case = 0;
-                            System.out.println("¿Desea planificar viaje? \n 1. Si \n 2. No");
-                            switch6case = keyboard.nextInt();
-                            switch(switch6case){
-                                case 1:
-                                {
-                                    //planificar viaje
-                                    System.out.println("Ingrese el destino de su viaje");
-                                    String destinoviaje ="";
-                                    destinoviaje = keyboard.next();
-                                    if(destinoviaje == "")
-                                    {
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        System.out.println(rad.viajes(destinoviaje));
-                                    }
-                                    break;
-                                }case 2:
-                                {
-                                    break;
-                                }
+											}
 
-                            }
-                            break;
-                        }
+										}
+										else if(op6==3){
+											System.out.println("1. Auriculares \n2. Speaker");
+											audio=teclado.nextInt();
+											teclado.nextLine();
+											if(audio==1){
+												yosi_sideral.audio(true);
+											}
+											else if(audio==2){
+												yosi_sideral.audio(false);
+											}
+										}
+										else if(op6==4){
+											continuar5=false;
+										}
+									}
+								}
+								
+							
+	
+					}
+					else if(op2==5){
+						while(continuar6){
+							System.out.println("Ahora se encuentra en el modo Productividad");
+							System.out.println("\n1. Planear viaje \n2. Salir");
+							op7=teclado.nextInt();
+							teclado.nextLine();
+							if(op7==1){
+								System.out.println("¿A donde desea ir?");
+								respuesta=teclado.nextLine();
+								System.out.println(yosi_sideral.viajes(respuesta));
+							}
+							else if(op7==2){
+								continuar6=false;
+							}
+						}
+					}
+					else if(op2==6){
+						yosi_sideral.estado(false);
+						continuar2=false;
+					}
+					else{
+						System.out.println("Ingrese algo válido");
+					}
 
-                    }
+				}
+				
+			}
+			else if(op1==2){
+				continuar=false;
+			}
+			else{
+				System.out.println("Ingrese algo válido");
+			}
 
-                }case 2:
-                {
-                    //Apagar radio
-                    
-                    break;
-                }
-            }
+		}
+	
+	}
+}
         }
     }
 }
